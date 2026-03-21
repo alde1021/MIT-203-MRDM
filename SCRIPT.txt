@@ -1,0 +1,65 @@
+PRAGMA foreign_keys = OFF;
+
+CREATE TABLE client_new (
+    client_id INTEGER PRIMARY KEY,
+    age INTEGER,
+    job TEXT,
+    marital TEXT,
+    education TEXT
+);
+
+DROP TABLE client_new;
+
+CREATE TABLE financial (
+    client_id INTEGER,
+    balance INTEGER,
+    housing TEXT,
+    loan TEXT,
+    FOREIGN KEY (client_id) REFERENCES client(client_id)
+);
+
+INSERT INTO financial (client_id, balance, housing, loan)
+SELECT client_id, balance, housing, loan
+FROM financial;
+
+
+SELECT name FROM sqlite_master WHERE type='table';
+
+
+
+CREATE TABLE campaign_new (
+    client_id INTEGER,
+    contact TEXT,
+    duration INTEGER,
+    campaign INTEGER,
+    pdays INTEGER,
+    previous INTEGER,
+    poutcome TEXT,
+    FOREIGN KEY (client_id) REFERENCES client(client_id)
+);
+
+INSERT INTO campaign_new
+SELECT * FROM campaign;
+
+DROP TABLE campaign;
+
+ALTER TABLE campaign_new RENAME TO campaign;
+
+CREATE TABLE target_new (
+    client_id INTEGER,
+    y TEXT,
+    FOREIGN KEY (client_id) REFERENCES client(client_id)
+);
+
+INSERT INTO target_new
+SELECT * FROM target;
+
+DROP TABLE target;
+
+ALTER TABLE target_new RENAME TO target;
+
+
+
+
+
+
