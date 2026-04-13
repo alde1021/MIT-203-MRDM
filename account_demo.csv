@@ -1,0 +1,7 @@
+account_id,district_id,frequency,date
+1,10,monthly,1995-01-01
+2,11,weekly,1996-03-12
+3,10,monthly,1995-07-07
+4,12,weekly,1997-02-10
+5,11,monthly,1996-11-21
+6,12,weekly,1995-05-05
